@@ -18,6 +18,7 @@ public class Asteroid : MonoBehaviour
     [Header("Speed Settings")]
     public float speed;
     private Rigidbody2D AsteroidRB;
+    private UIController UIController;
 
     void Start()
     {
@@ -27,6 +28,7 @@ public class Asteroid : MonoBehaviour
 
         AsteroidRB.velocity = new Vector3(Random.Range(-1,1), Random.Range(-1, 1), 0).normalized * speed;
         AsteroidRB.angularVelocity = Random.Range(-50, 50);
+        UIController = GameObject.Find("Canvas").GetComponent<UIController>();
     }
 
     void Update()
@@ -36,6 +38,7 @@ public class Asteroid : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Laser")) {
+            UIController.setPoints(10);
             if (asteroidSize == AsteroidSize.bigAsteroid)
             {
                 AsteroidSpawner spawner = GameObject.Find("AsteroidSpawner").GetComponent<AsteroidSpawner>();

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class ShipController : MonoBehaviour
 {
     [Header("Speed Settings")]
@@ -16,18 +17,22 @@ public class ShipController : MonoBehaviour
     public float offsetLaser;
     public GameObject laserPrefab;
     public float shootRate = 0.2f;
+  
+
 
     private Rigidbody2D shipRB; // referencia al rigidbody
     private float vertical;
     private float horizontal;
     private bool shooting;
     private bool canShoot = true;
+    private UIController UIController;
+
 
     private void Start()
     {
         shipRB = GetComponent<Rigidbody2D>(); // Obtiene el componente Rigidbody2D.
         shipRB.drag = drag;
-
+        UIController = GameObject.Find("Canvas").GetComponent<UIController>();
         initialSetup(new Vector3(0, 0, 0));
     }
     private void Update()
@@ -90,7 +95,11 @@ public class ShipController : MonoBehaviour
 
     public void Lose() {
         initialSetup(new Vector3(0, 0, 0));
-        speed = 0;
-
+        UIController.ShowPanel();
+        UIController.totalPoints = 0;
+        UIController.setPoints(0);
     }
+
+    
+
 }
