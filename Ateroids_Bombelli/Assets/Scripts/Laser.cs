@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class Laser : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float speed;
 
     // Update is called once per frame
     void Update()
     {
-        
+        transform.position += transform.up * speed * Time.deltaTime;
     }
 }

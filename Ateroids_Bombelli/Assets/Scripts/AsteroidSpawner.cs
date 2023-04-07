@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class AsteroidSpawner : MonoBehaviour
 {
+    [Header("Asteroids Settings")]
+    public GameObject asteroidBigPrefab;
+    public GameObject asteroidSmallPrefab;
+
+
     // Start is called before the first frame update
     void Start()
     {
