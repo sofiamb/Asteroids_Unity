@@ -87,4 +87,10 @@ public class ShipController : MonoBehaviour
         
         canShoot = true;
     }
+
+    public void Lose() {
+        initialSetup(new Vector3(0, 0, 0));
+        speed = 0;
+
+    }
 }
