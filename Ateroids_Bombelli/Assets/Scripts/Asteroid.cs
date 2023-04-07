@@ -6,6 +6,7 @@ public class Asteroid : MonoBehaviour
 {
     [Header("Asteroid type Settings")]
     public bool isAsteroidBig;
+    public int childAsteroidsNumber;
 
     [Header("Speed Settings")]
     public float speed;
@@ -32,12 +33,10 @@ public class Asteroid : MonoBehaviour
             {
                 AsteroidSpawner spawner = GameObject.Find("AsteroidSpawner").GetComponent<AsteroidSpawner>();
 
-                GameObject smallAsteroid1 = Instantiate(spawner.asteroidSmallPrefab);
-                smallAsteroid1.transform.position = new Vector3(this.transform.position.x + Random.Range(-1.5f, 1.5f), this.transform.position.y + Random.Range(-1.5f, 1.5f), 0);
-
-                GameObject smallAsteroid2 = Instantiate(spawner.asteroidSmallPrefab);
-                smallAsteroid2.transform.position = new Vector3(this.transform.position.x + Random.Range(-1.5f, 1.5f), this.transform.position.y + Random.Range(-1.5f, 1.5f), 0);
-
+                for (int i = 0; i < childAsteroidsNumber; i++) {
+                    GameObject smallAsteroid = Instantiate(spawner.asteroidSmallPrefab);
+                    smallAsteroid.transform.position = new Vector3(this.transform.position.x + Random.Range(-1.5f, 1.5f), this.transform.position.y + Random.Range(-1.5f, 1.5f), 0);
+                }
             }
            
 
